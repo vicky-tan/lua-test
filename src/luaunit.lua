@@ -130,21 +130,21 @@ function _T:assert_is_not_nil(value)
 	table.insert(_R, {(value ~= nil), nil})
 end
 
-function _T:assert_in(table, key)
-	if not table or not key then 
-		table.insert(_R, {false, 'table or key is nil'})
+function _T:assert_in(t, key)
+	if not t or not key then 
+		t.insert(_R, {false, 'table or key is nil'})
 		return
 	end
 	
-	if type(actual) == 'table' then
-		for _, k in pairs(table) do
+	if type(t) == 'table' then
+		for _, k in pairs(t) do
 			if k == key then
 				table.insert(_R, {true, nil})
 				return
 			end
 		end
 		
-		for k, _ in ipairs(table) do
+		for k, _ in ipairs(t) do
 			if k == key then
 				table.insert(_R, {true, nil})
 				return
@@ -155,21 +155,21 @@ function _T:assert_in(table, key)
 	table.insert(_R, {false, key..' is not in table'})
 end
 
-function _T:assert_not_in(table, key)
-	if not table or not key then 
+function _T:assert_not_in(t, key)
+	if not t or not key then 
 		table.insert(_R, {false, 'table or key is nil'})
 		return
 	end
 	
-	if type(actual) == 'table' then
-		for _, k in pairs(table) do
+	if type(t) == 'table' then
+		for _, k in pairs(t) do
 			if k == key then
 				table.insert(_R, {false, key..' is in table'})
 				return
 			end
 		end
 		
-		for k, _ in ipairs(table) do
+		for k, _ in ipairs(t) do
 			if k == key then
 				table.insert(_R, {false, key..' is in table'})
 				return
