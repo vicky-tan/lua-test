@@ -50,7 +50,7 @@ function _T:assert_true(value)
 		table.insert(_R, {true, nil})
 		return
 	end
-	table.insert(_R, {false, value..' is not true'})
+	table.insert(_R, {false, nil})
 end
 
 function _T:assert_false(value)
@@ -58,7 +58,7 @@ function _T:assert_false(value)
 		table.insert(_R, {true, nil})
 		return
 	end
-	table.insert(_R, {false, value..' is not false'})
+	table.insert(_R, {false, nil})
 end
 
 function _T:assert_greater_than(actual, expected)
@@ -217,7 +217,7 @@ function _M:print_result(test_result)
 		else
 			print(string.format('%s fail', name))
 			for _, msg in pairs(result) do
-				if not msg[1] then
+				if not msg[1] and msg[2] then
 					print('  '..msg[2])
 				end
 			end
